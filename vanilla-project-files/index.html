@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Multi-step form</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <link href="./index.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <main>
+    
+    <!-- Sidebar start -->
+    <section class="gr">
+      <div class="sidebar">
+        <div>
+          <button class="btn-nav" type="button">1</button>
+          <div class="gr-navDiv">
+            <p class="step">Step 1</p>
+            <h3 class="form-title">Your info</h3>
+          </div>
+        </div>  
+        <div>
+          <button class="btn-nav">2</button>
+          <div class="gr-navDiv">
+            <p class="step">Step 2</p>
+            <h3 class="form-title">Select plan</h3>
+          </div>
+        </div>
+        <div>
+          <button class="btn-nav">3</button>
+          <div class="gr-navDiv">
+            <p class="step">Step 3</p>
+            <h3 class="form-title">Add-ons</h3>
+          </div>
+        </div>
+        <div>
+          <button class="btn-nav">4</button>
+          <div class="gr-navDiv">
+            <p class="step">Step 4</p>
+            <h3 class="form-title">Summary</h3>
+          </div>
+        </div>
+      </div>
+    <!-- Sidebar end -->
+
+    <!-- Step 1 start -->
+  <section class="personalInfo card1">
+    <div class="card card-bg pd-3">
+      <h1>Personal info</h1>
+      <p>Please provide your name, email address, and phone number.</p>
+
+      <legend for="name">Name</legend>
+      <input type="text" class="pd-2 w-auto" id="name" name="Name" placeholder="e.g. Stephen King" autocomplete="given-name"/>
+      <br><br>
+      <legend for="email">Email Address</legend>
+      <input type="email" class="pd-2 w-auto" id="email" name="Email" placeholder="e.g. stephenking@lorem.com" autocomplete="email"/>
+      <br><br>
+      <legend for="phone-no">Phone Number</legend>
+      <input type="number" class="pd-2 w-auto" id="phone-no" name="Phone-No" placeholder="e.g. +1 234 567 890" required/>
+      <br><br>
+    </div>
+    <div class="btn-position">
+      <input type="button" class="pd-2" id="next1" name="Next-1" value="Next Step"/>
+    </div>
+  </section>
+    <!-- Step 1 end -->
+
+    <!-- Step 2 start -->
+<section class="card2" id="plan">
+  <div class="card-bg  pd-3 card">
+    <h1>Select your plan</h1>
+    <p class="p-color">You have the option of monthly or yearly billing.</p>
+    <div class="gr-plan">
+      <label class="plan" for="plan-1">
+        <input type="radio" name="Plan" id="plan-1">
+        <img src="./assets/images/icon-arcade.svg" alt="arcade-icon" />
+        <div>
+          <h2>Arcade</h2>
+          <p class="p-color">$<span class="monthlyCost">9</span>/<span class="m-y">mo</span></span></p>
+          <p class="gr-offer">2 months free</p>
+        </div>
+      </label>
+      <label class="plan" for="plan-2">
+        <input type="radio" name="Plan" id="plan-2">
+        <img src="./assets/images/icon-advanced.svg" alt="advance-icon"/>
+        <div>
+          <h2>Advanced</h2>
+          <p class="p-color">$<span class="monthlyCost">12</span>/<span class="m-y">mo</span></p>
+          <p class="gr-offer">2 months free</p>
+        </div>
+      </label>
+      <label class="plan" for="plan-3">
+        <input type="radio" name="Plan" id="plan-3">
+        <img src="./assets/images/icon-pro.svg" alt="pro-icon"/>
+        <div>
+          <h2>Pro</h2>
+          <p class="p-color">$<span class="monthlyCost">15</span>/<span class="m-y">mo</span></p>
+          <p class="gr-offer">2 months free</p>
+        </div>
+      </label>
+    </div>
+    <div class="M-or-Y">
+      <p>Monthly</p>
+      <!-- Rounded switch -->
+      <label class="switch" for="checkbox">
+        <input type="checkbox" id="checkbox" name="monthlyYearly" class="M-or-Y1">
+        <span class="slider round"></span>
+      </label>
+      <p>Yearly</p>
+    </div>
+</div>
+<div class="btn-position">
+    <input type="button" class="pd-2" name="Back-3" id="back2" value="Go Back" />
+    <input type="button" class="pd-2" name="Next-2" id="next2" value="Next Step" />
+</div>
+</section>
+    <!-- Step 2 end -->
+
+    <!-- Step 3 start -->
+<section class=" card3">
+  <div class="card-bg card pd-3">
+    <h1>Pick add-ons</h1>
+    <p>Add-ons help enhance your gaming experience.</p>
+
+    <label class="container addOn">
+      <div>
+        <input type="checkbox" name="multiplayer-checbox">
+        <span class="checkmark"></span>
+        <div>
+          <h2>Online service</h2>
+          <p class="p-color">Access to multiplayer games</p>
+        </div>
+      </div>
+      <p>+$<span class="addOn-rates">1</span>/<span class="m-y">mo</span></p>
+      </label>
+
+      <label class="container addOn">
+        <div>
+          <input type="checkbox" name="extra-space-checkbox">
+          <span class="checkmark"></span>
+          <div>
+            <h2>Larger storage</h2>
+            <p class="p-color">Extra 1TB of cloud save</p>
+          </div>
+        </div>
+        <p>+$<span class="addOn-rates">2</span>/<span class="m-y">mo</span></p>
+      </label>
+
+      <label class="container addOn">
+        <div>
+          <input type="checkbox" name="theme-checkbox">
+          <span class="checkmark"></span>
+          <div>
+            <h2>Customizable Profile</h2>
+            <p class="p-color">Custom theme on your profile</p>
+          </div>
+        </div>
+        <p>+$<span class="addOn-rates">2</span>/<span class="m-y">mo</span></p>
+      </label>
+</div>
+
+<div class="btn-position">
+    <input type="button" class="pd-2" name="Back-3" id="back3" value="Go Back" />
+    <input type="button" class="pd-2" name="Next-3" id="next3" value="Next Step" />
+</div>
+</section>
+    <!-- Step 3 end -->
+
+    <!-- Step 4 start -->
+<section class="card4">
+  <div class="card-bg pd-3 card">
+    <h1>Finishing up</h1>
+    <p class="p-color">Double-check everything looks OK before confirming.</p>
+
+    <!-- Dynamically add subscription and add-on selections here -->
+    <div id="totalCost">
+      <div>
+        <div>
+          <h3>Arcade (<span id="Mo-Ye">Monthly</span>)<span id="choice"></span></h3>
+          <a href="#plan">Change</a>
+        </div>
+        <p>$<span class="finish-rate">9</span>/<span class="m-y">mo</span></p>
+      </div>
+      <hr>
+      <div>
+        <p>Online service</p>
+        <p>+$<span class="finish-rate">1</span>/<span class="m-y">mo</span></p>
+      </div>
+      <div>
+        <p>Larger storage</p>
+        <p>+$<span class="finish-rate">2</span>/<span class="m-y">mo</span></p>
+      </div>
+    </div>
+    <div class="pd-3 d-flex justify-spacebetween">
+      <p class="p-color">Total (per<span></span>)</p>
+      <p>+$<span id="total"></span>/<span class="m-y">mo</span></p>
+    </div>
+</div>
+<div class="btn-position">
+    <input type="button" class="pd-2" name="Back-3" id="back4" value="Go Back" />
+    <input type="button" class="pd-2" name="Confirm" id="next4" value="Confirm" />
+</div>
+</section>
+    <!-- Step 4 end -->
+
+    <!-- Step 5 start -->
+<section class="t-auto card5">
+  <div class="card-bg pd-3 card">
+    <img src="./assets/images/icon-thank-you.svg" alt="icon-thank-you" />
+    <h1>Thank you!</h1>
+
+    <p class="p-color">Thanks for confirming your subscription! We hope you have fun 
+    using our platform. If you ever need support, please feel free 
+    to email us at support@loremgaming.com. </p>
+    </div>
+    </section>
+  </section>
+  </main>
+  <!-- Step 5 end -->
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Akshaykumar I. Magrani</a>.
+  </div>
+</body>
+<script src="./index.js"></script>
+</html>

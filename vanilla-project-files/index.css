@@ -1,0 +1,475 @@
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 10px;
+    background-color: var(--Magnolia);
+}
+h1{
+    font-family: Ubuntu-B;
+    font-size: 2.6em;
+}
+h2{
+    font-family: Ubuntu-M;
+    font-size: 2.2em;
+}
+h3{
+    font-family: Ubuntu-R;
+    font-size: 1.8em;
+}
+p{
+    font-family: Ubuntu-R;
+    font-size: 1.6em;
+}
+section{
+    margin: auto;
+}
+
+/* ==== Utilities ==== */
+.p-color{
+    color: var(--Cool-gray);
+}
+.card-bg{
+    background-color: var(--White);
+    border-radius: 10px;
+    box-shadow: 0 10px 15px lightgrey;
+}
+.card{
+    padding: 1.6em; 
+    width: clamp(200px, calc(100vw - 6em), 362px);
+    position: relative;
+    top: -4em;
+    margin: 0 auto;
+}
+.pd-3{
+    padding: 1.6em;
+}
+.pd-2{
+    padding: 1em;
+}
+.w-100{
+    width: 100%;
+}
+.w-auto{
+    width: auto;
+}
+.t-auto{
+    text-align: center;
+}
+.d-flex{
+    display: flex;
+}
+.justify-spacebetween{
+    justify-content: space-between;
+}
+/* ==== Sidebar ==== */
+.sidebar{
+    display: flex;
+    justify-content: center;
+    background-image: var(--mobile-Image-Add);
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 200px;
+    background-position: center;
+    background-size: cover;
+}
+.sidebar button{
+    margin: 2em 1.6em;
+    border-radius: 50%;
+    border: solid 1px white;
+    height: 40px;
+    width: 40px;
+}
+.sidebar a{
+    color: white;
+    text-decoration: none;
+}
+/* .sidebar button{
+    background-color: var(--Light-blue);
+    color: black;
+} */
+.sidebar .step, .sidebar .form-title{
+    display: none;
+}
+input[value="Next Step"]{
+    margin: 1.6em;
+    background-color: var(--Marine-blue);
+    color: white;
+    border: 0;
+    border-radius: 5px;
+}
+input[value="Go Back"] {
+    margin: 1.6em;
+    color: var(--Cool-gray);
+    border: 0;
+    border-radius: 5px;
+    background-color: transparent;
+}
+input[value="Confirm"]{
+    margin: 1.6em;
+    background-color: var(--Purplish-blue);
+    color: white;
+    border: 0;
+    border-radius: 5px;
+}
+.btn-position{
+    display: flex;
+    justify-content: space-between;
+}
+
+.plan{
+    border-radius: 5px;
+    border: 2px solid transparent;
+}
+input[type="radio"]{
+    width: 2px;
+    height: 2px;
+}
+.plan, .plan img{
+    margin: 1.6em 0;
+}
+.plan div{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+}
+.plan h2, .plan div p {
+    margin: 0 0 0 1em;
+}
+.addOn h2,
+.plan div p,
+.addOn p {
+    margin: 0 0 0 2em;
+}
+.radio-no-border {
+    border: 2px solid transparent;
+}
+.M-or-Y{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--Light-gray);
+    color: var(--Cool-gray);
+    border-radius: 10px;
+}
+
+/* ==== Personal Info ==== */
+legend {
+    font-size: small;
+    padding: 0;
+    margin: 0.5em 0;
+}
+/* ==== Plan ==== */
+.plan{
+    display: flex;
+}
+.gr-offer {
+    display: none;
+}
+#name:focus-visible{
+    border: 2px solid var(--Purplish-blue) !important;
+}
+
+.addOn{
+    display: flex;
+    margin: 0.5em 0;
+    justify-content: space-between;
+    align-items: center;
+}
+label.addOn{
+    display: flex;
+    margin: 1.6em 0;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+}
+input[type="checkbox"]{
+    width: 20px;
+}
+#totalCost{
+    background-color: var(--Light-gray);
+    border-radius: 10px;
+    padding: 1.6em;
+}
+#totalCost p{
+    margin: 0;
+}
+#totalCost h3{
+    margin: 0.5em 0;
+}
+#totalCost > div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1em 0
+}
+.checkmark:active
+
+/* ==== Footer ==== */
+.attribution {
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+/* Customize the label (the container) */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    height: 25px;
+    width: 25px;
+    background-color: white;
+    border: 1px solid var(--Light-gray);
+    border-radius: 5px;
+    margin: 0.5em 0;
+    transform: translate(0, 50%);
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked~.checkmark {
+    background-color: var(--Marine-blue);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.card1, .card2, .card3, .card4, .card5 {
+    background-color: var(--Magnolia);
+    height: calc(100vh - 200px);
+    position: relative;
+}
+.card1 input:not(input[value="Next Step"]){
+    width: calc(100% - 2.2em);
+}
+.card1 input[value="Next Step"]{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.d-none{
+    display: none;
+}
+
+.btn-position{
+    position: absolute;
+    bottom: 1.6em;
+    width: 100%;
+}
+.btn-nav {
+    background-color: var(--Marine-blue);
+    color: white;
+    font-weight: bold;
+}
+.bg-blue{
+    background-color: var(--Light-blue);
+    color: black;
+    font-weight: bold;
+}
+
+/* Slider */
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 54px;
+    height: 24px;
+    margin: 0.5em 1.6em;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--Marine-blue);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 1.75em;
+    width: 1.75em;
+    left: 4px;
+    top: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: var(--Marine-blue);
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px var(--Marine-blue);
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+@media screen and (min-width: 52em) {
+    main{
+        display: flex;
+        align-items: center;
+        height: calc(100vh - 10px);
+    }
+    .gr{
+        display: grid;
+        grid-template-columns: 0.75fr 2fr;
+        width: 65vw;
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+        background-color: white;
+        padding: 1.6em;
+        border-radius: 10px;
+    }
+    .sidebar{
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        background-image: var(--desktop-Image-Add);
+        justify-content: flex-start;
+        border-radius: 10px;
+    }
+    .card1,
+    .card2,
+    .card3,
+    .card4,
+    .card5 {
+        background-color: white;
+    }
+    .card:not(:last-child){
+        top:0;
+        min-width: 100%;
+    }
+    .card:last-child {
+        transform: translateY(50%);
+    }
+    .card-bg{
+        box-shadow: none;
+    }
+    .sidebar .step,.sidebar .form-title{
+        display: block;
+        margin: 0;
+        color: white;
+        text-transform: uppercase;
+        font-weight: lighter;
+    }
+    .sidebar .step{
+        color: var(--Light-gray);
+    }
+    .sidebar div{
+        display: flex;
+    }
+    .gr-navDiv{
+        display: flex;
+        align-items: baseline;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .gr-plan{
+        display: grid;
+        grid-template-columns: repeat(3, minmax(50px, 1fr));
+        gap: 1em;
+    }
+    .gr-offer{
+        display: block;
+        color: var(--Marine-blue);
+        font-size: small;
+    }
+    .plan{
+        flex-direction: column;
+        border-radius: 5px;
+        border: 2px solid var(--Light-gray);
+        padding: 1.6em;
+    }
+    .plan div, .plan img{
+        margin: 1.6em 0;
+    }
+    .plan img{
+        width: 40px;
+        height: 40px;
+    }
+    .plan h2, .plan div p{
+        margin: 0;
+    }
+}
+.radio-border {
+    border: 2px solid blue;
+}
+.radio-no-border {
+    border: 2px solid var(--Light-gray);
+}
