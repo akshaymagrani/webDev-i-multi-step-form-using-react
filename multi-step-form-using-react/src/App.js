@@ -5,45 +5,67 @@ import Plans from './Plans';
 import AddOns from './AddOns';
 import Total from './Total';
 import ThankYou from './ThankYou';
+import { useReducer } from 'react';
 
 function App() {
-  const [isVisible, setVisibility] = React.useState('Info');
-  const [btnBg, setBtnBg] = React.useState(
-    {
-      button1: {backgroundColor: "hsl(206, 94%, 87%)"},
-      button2: {backgroundColor: "hsl(213, 96%, 18%)"},
-      button3: {backgroundColor: "hsl(213, 96%, 18%)"},
-      button4: {backgroundColor: "hsl(213, 96%, 18%)"}
-    });
   
-  function toggleVisibility(componentName, buttonName) {
-    setVisibility((prevState) => 
-      prevState === componentName ? null : componentName
-    );
-    
-    setBtnBg((prevBgColor) => {
-      const updatedBgColors = {};
-      // Set the clicked button to light blue
-      updatedBgColors[buttonName] = { backgroundColor: 'hsl(206, 94%, 87%)' };
-      // Set other buttons to dark blue
-      Object.keys(prevBgColor).forEach((name) => {
-        if (name !== buttonName) {
-          updatedBgColors[name] = { backgroundColor: 'hsl(213, 96%, 18%)' };
-        }
-      });
-      return updatedBgColors;
-    });
-  console.log(btnBg);
-};
-
-  // State to handle React form data
-  const [formData, setFormData] = React.useState({
+  const [state, dispatch] = useReducer((state,action) => {
+    switch (action.type) {
+      case 'name-update':
+        return {
+          ...state,
+          name: action.payload.name,
+          nameError: action.payload.error,
+        };
+      case 'email-update':
+        return {
+          ...state,
+          email: action.payload.email,
+          emailError: action.payload.error,
+        };
+      case 'phone-update':
+        return {
+          ...state,
+          phoneNo: action.payload.phoneNo,
+          phoneNoError: action.payload.error,
+        };
+      case 'plan-update':
+        return {
+          ...state,
+          plan: action.payload.plan,
+        };
+      case 'addOn-OnlineService-update':
+        return {
+          ...state,
+          onlineService: action.payload.onlineService,
+        };
+      case 'addOn-extraSpace-update':
+        return {
+          ...state,
+          extraSpace: action.payload.extraSpace,
+        };
+      case 'addOn-theme-update':
+        return {
+          ...state,
+          theme: action.payload.theme,
+        };
+      case 'plan-monthly_OR_yearly':
+        return {
+          ...state,
+          monthly_OR_yearly: action.payload.monthly_OR_yearly,
+        };
+      default:
+        return state;
+      }
+  }, {
     name: "",
     email: "",
     phoneNo: "",
     plan: "Arcade",
     addOns: "",
     total: "",
+    touched: true,
+    error: null,
     onlineService: false,
     extraSpace: false,
     theme: false,
@@ -64,16 +86,37 @@ function App() {
       extraSpace: 20,
       theme: 20
     }
-  })
-
-  function handleChange(event) {
-      const {name, type, value, checked} = event.target;
-      setFormData(prevData => ({
-          ...prevData,
-          [name]: type === 'checkbox'? checked: value
-      }))
-      console.log(formData);
-  }
+  });
+  console.log(state);
+  
+  const [isVisible, setVisibility] = React.useState('Info');
+  const [btnBg, setBtnBg] = React.useState(
+    {
+      button1: {backgroundColor: "hsl(206, 94%, 87%)", color: 'black'},
+      button2: {backgroundColor: "hsl(213, 96%, 18%)", color: 'white'},
+      button3: {backgroundColor: "hsl(213, 96%, 18%)", color: 'white'},
+      button4: {backgroundColor: "hsl(213, 96%, 18%)", color: 'white'}
+    });
+  
+  function toggleVisibility(componentName, buttonName) {
+    setVisibility((prevState) => 
+      prevState === componentName ? null : componentName
+    );
+    
+    setBtnBg((prevBgColor) => {
+      const updatedBgColors = {};
+      // Set the clicked button to light blue
+      updatedBgColors[buttonName] = { backgroundColor: 'hsl(206, 94%, 87%)', color: 'black' };
+      // Set other buttons to dark blue
+      Object.keys(prevBgColor).forEach((name) => {
+        if (name !== buttonName) {
+          updatedBgColors[name] = { backgroundColor: 'hsl(213, 96%, 18%)', color: 'white' };
+        }
+      });
+      return updatedBgColors;
+    });
+  console.log(btnBg);
+};
 
   function onSubmit(event){
       event.preventDefault();
@@ -121,36 +164,36 @@ function App() {
         <Info 
           isVisible = {isVisible} 
           makeVisible = {toggleVisibility} 
-          componentNameNext = {'Plans'}
-          formData = {formData}
-          handleChange = {handleChange}
+          componentNameNext = {'Plans'}        
+          dispatch = {dispatch}
+          state = {state}
         />}
       {isVisible === 'Plans' && 
         <Plans 
           isVisible = {isVisible} 
           makeVisible = {toggleVisibility} 
           componentNameBack = {'Info'}
-          componentNameNext = {'AddOns'}
-          formData = {formData}
-          handleChange = {handleChange}
+          componentNameNext = {'AddOns'}               
+          dispatch = {dispatch}
+          state = {state}
         />}
       {isVisible === 'AddOns' && 
         <AddOns 
           isVisible = {isVisible} 
           makeVisible = {toggleVisibility} 
           componentNameBack = {'Plans'}
-          componentNameNext = {'Total'}
-          formData = {formData}
-          handleChange = {handleChange}
+          componentNameNext = {'Total'}                
+          dispatch = {dispatch}
+          state = {state}
         />}
       {isVisible === 'Total' && 
         <Total 
           isVisible = {isVisible} 
           makeVisible = {toggleVisibility} 
           componentNameBack = {'AddOns'}
-          componentNameNext = {'ThankYou'}
-          formData = {formData}
-          handleChange = {handleChange}
+          componentNameNext = {'ThankYou'}                
+          dispatch = {dispatch}
+          state = {state}
           onSubmit = {onSubmit}
         />}
 
