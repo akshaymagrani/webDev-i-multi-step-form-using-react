@@ -9,65 +9,53 @@ import { useReducer } from 'react';
 
 function App() {
 
-  // State to handle React form data
-  const [formData, setFormData] = React.useState({
-    name: "",
-    email: "",
-    phoneNo: "",
-    plan: "Arcade",
-    addOns: "",
-    total: "",
-    touched: true,
-    nameError: null,
-    emailError: null,
-    phoneNoError: null,
-    onlineService: false,
-    extraSpace: false,
-    theme: false,
-    monthly_OR_yearly: false,
-    monthlyRates: {
-      arcade: 9,
-      advanced: 12,
-      pro: 15,
-      onlineService: 1,
-      extraSpace: 2,
-      theme: 2
-    },
-    yearlyRates: {
-      arcade: 90,
-      advanced: 120,
-      pro: 150,
-      onlineService: 10,
-      extraSpace: 20,
-      theme: 20
-    }
-  });
-
   const [state, dispatch] = useReducer((state,action) => {
     switch (action.type) {
       case 'name-update':
-        console.log(action.payload.name);
         return {
           ...state,
           name: action.payload.name,
           nameError: action.payload.error,
         };
       case 'email-update':
-      console.log(action.payload.email);
       return {
         ...state,
         email: action.payload.email,
         emailError: action.payload.error,
       };
       case 'phone-update':
-      console.log(action.payload.email);
       return {
         ...state,
         phoneNo: action.payload.phoneNo,
         phoneNoError: action.payload.error,
       };
-        default:
-          return formData;
+      case 'plan-update':
+      return {
+        ...state,
+        plan: action.payload.plan,
+      };
+      case 'addOn-OnlineService-update':
+      return {
+        ...state,
+        onlineService: action.payload.onlineService,
+      };
+      case 'addOn-extraSpace-update':
+      return {
+        ...state,
+        extraSpace: action.payload.extraSpace,
+      };
+      case 'addOn-theme-update':
+      return {
+        ...state,
+        theme: action.payload.theme,
+      };
+      case 'plan-monthly_OR_yearly':
+      return {
+        ...state,
+        monthly_OR_yearly: action.payload.monthly_OR_yearly,
+      };
+      default:
+        return state;
       }
   }, {
     name: "",
@@ -101,14 +89,13 @@ function App() {
   });
   console.log(state);
   
-  const [id, setId] = React.useState(0);
   const [isVisible, setVisibility] = React.useState('Info');
   const [btnBg, setBtnBg] = React.useState(
     {
-      button1: {backgroundColor: "hsl(206, 94%, 87%)"},
-      button2: {backgroundColor: "hsl(213, 96%, 18%)"},
-      button3: {backgroundColor: "hsl(213, 96%, 18%)"},
-      button4: {backgroundColor: "hsl(213, 96%, 18%)"}
+      button1: {backgroundColor: "hsl(206, 94%, 87%)", color: 'black'},
+      button2: {backgroundColor: "hsl(213, 96%, 18%)", color: 'white'},
+      button3: {backgroundColor: "hsl(213, 96%, 18%)", color: 'white'},
+      button4: {backgroundColor: "hsl(213, 96%, 18%)", color: 'white'}
     });
   
   function toggleVisibility(componentName, buttonName) {
@@ -119,40 +106,17 @@ function App() {
     setBtnBg((prevBgColor) => {
       const updatedBgColors = {};
       // Set the clicked button to light blue
-      updatedBgColors[buttonName] = { backgroundColor: 'hsl(206, 94%, 87%)' };
+      updatedBgColors[buttonName] = { backgroundColor: 'hsl(206, 94%, 87%)', color: 'black' };
       // Set other buttons to dark blue
       Object.keys(prevBgColor).forEach((name) => {
         if (name !== buttonName) {
-          updatedBgColors[name] = { backgroundColor: 'hsl(213, 96%, 18%)' };
+          updatedBgColors[name] = { backgroundColor: 'hsl(213, 96%, 18%)', color: 'white' };
         }
       });
       return updatedBgColors;
     });
   console.log(btnBg);
 };
-
-function handleCounterIcrememnt(count) {
-  if (count == 4){
-    setCounter(0);
-  }
-  setCounter(count => count++);
-}
-function handleCounterDecrement(count) {
-  if (count == 0){
-    setCounter(0);
-  }
-  setCounter(count => count--);
-}
-  
-
-  function handleChange(event) {
-      const {name, type, value, checked} = event.target;
-      setFormData(prevData => ({
-          ...prevData,
-          [name]: type === 'checkbox'? checked: value
-      }))
-      console.log(formData);
-  }
 
   function onSubmit(event){
       event.preventDefault();
@@ -200,8 +164,7 @@ function handleCounterDecrement(count) {
         <Info 
           isVisible = {isVisible} 
           makeVisible = {toggleVisibility} 
-          componentNameNext = {'Plans'}
-          handleChange = {handleChange}
+          componentNameNext = {'Plans'}        
           dispatch = {dispatch}
           state = {state}
         />}
@@ -210,27 +173,27 @@ function handleCounterDecrement(count) {
           isVisible = {isVisible} 
           makeVisible = {toggleVisibility} 
           componentNameBack = {'Info'}
-          componentNameNext = {'AddOns'}
-          formData = {formData}
-          handleChange = {handleChange}
+          componentNameNext = {'AddOns'}               
+          dispatch = {dispatch}
+          state = {state}
         />}
       {isVisible === 'AddOns' && 
         <AddOns 
           isVisible = {isVisible} 
           makeVisible = {toggleVisibility} 
           componentNameBack = {'Plans'}
-          componentNameNext = {'Total'}
-          formData = {formData}
-          handleChange = {handleChange}
+          componentNameNext = {'Total'}                
+          dispatch = {dispatch}
+          state = {state}
         />}
       {isVisible === 'Total' && 
         <Total 
           isVisible = {isVisible} 
           makeVisible = {toggleVisibility} 
           componentNameBack = {'AddOns'}
-          componentNameNext = {'ThankYou'}
-          formData = {formData}
-          handleChange = {handleChange}
+          componentNameNext = {'ThankYou'}                
+          dispatch = {dispatch}
+          state = {state}
           onSubmit = {onSubmit}
         />}
 
