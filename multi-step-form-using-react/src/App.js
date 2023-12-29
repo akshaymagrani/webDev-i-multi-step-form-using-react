@@ -121,7 +121,6 @@ function App() {
   function onSubmit(event){
       event.preventDefault();
       console.log("submitted!");
-      console.log(formData);
   }
 
   return (
