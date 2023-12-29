@@ -399,9 +399,6 @@ input[type="checkbox"] {
   color: white;
   font-weight: bold;
 }
-.btn-nav:click{
-  background-color: var(--Light-blue);
-}
 
 .bg-blue {
   background-color: var(--Light-blue);

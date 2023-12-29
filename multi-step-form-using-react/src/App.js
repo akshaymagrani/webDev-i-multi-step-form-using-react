@@ -8,7 +8,7 @@ import ThankYou from './ThankYou';
 import { useReducer } from 'react';
 
 function App() {
-
+  
   const [state, dispatch] = useReducer((state,action) => {
     switch (action.type) {
       case 'name-update':
@@ -18,42 +18,42 @@ function App() {
           nameError: action.payload.error,
         };
       case 'email-update':
-      return {
-        ...state,
-        email: action.payload.email,
-        emailError: action.payload.error,
-      };
+        return {
+          ...state,
+          email: action.payload.email,
+          emailError: action.payload.error,
+        };
       case 'phone-update':
-      return {
-        ...state,
-        phoneNo: action.payload.phoneNo,
-        phoneNoError: action.payload.error,
-      };
+        return {
+          ...state,
+          phoneNo: action.payload.phoneNo,
+          phoneNoError: action.payload.error,
+        };
       case 'plan-update':
-      return {
-        ...state,
-        plan: action.payload.plan,
-      };
+        return {
+          ...state,
+          plan: action.payload.plan,
+        };
       case 'addOn-OnlineService-update':
-      return {
-        ...state,
-        onlineService: action.payload.onlineService,
-      };
+        return {
+          ...state,
+          onlineService: action.payload.onlineService,
+        };
       case 'addOn-extraSpace-update':
-      return {
-        ...state,
-        extraSpace: action.payload.extraSpace,
-      };
+        return {
+          ...state,
+          extraSpace: action.payload.extraSpace,
+        };
       case 'addOn-theme-update':
-      return {
-        ...state,
-        theme: action.payload.theme,
-      };
+        return {
+          ...state,
+          theme: action.payload.theme,
+        };
       case 'plan-monthly_OR_yearly':
-      return {
-        ...state,
-        monthly_OR_yearly: action.payload.monthly_OR_yearly,
-      };
+        return {
+          ...state,
+          monthly_OR_yearly: action.payload.monthly_OR_yearly,
+        };
       default:
         return state;
       }
