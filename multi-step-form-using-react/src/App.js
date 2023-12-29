@@ -5,8 +5,103 @@ import Plans from './Plans';
 import AddOns from './AddOns';
 import Total from './Total';
 import ThankYou from './ThankYou';
+import { useReducer } from 'react';
 
 function App() {
+
+  // State to handle React form data
+  const [formData, setFormData] = React.useState({
+    name: "",
+    email: "",
+    phoneNo: "",
+    plan: "Arcade",
+    addOns: "",
+    total: "",
+    touched: true,
+    nameError: null,
+    emailError: null,
+    phoneNoError: null,
+    onlineService: false,
+    extraSpace: false,
+    theme: false,
+    monthly_OR_yearly: false,
+    monthlyRates: {
+      arcade: 9,
+      advanced: 12,
+      pro: 15,
+      onlineService: 1,
+      extraSpace: 2,
+      theme: 2
+    },
+    yearlyRates: {
+      arcade: 90,
+      advanced: 120,
+      pro: 150,
+      onlineService: 10,
+      extraSpace: 20,
+      theme: 20
+    }
+  });
+
+  const [state, dispatch] = useReducer((state,action) => {
+    switch (action.type) {
+      case 'name-update':
+        console.log(action.payload.name);
+        return {
+          ...state,
+          name: action.payload.name,
+          nameError: action.payload.error,
+        };
+      case 'email-update':
+      console.log(action.payload.email);
+      return {
+        ...state,
+        email: action.payload.email,
+        emailError: action.payload.error,
+      };
+      case 'phone-update':
+      console.log(action.payload.email);
+      return {
+        ...state,
+        phoneNo: action.payload.phoneNo,
+        phoneNoError: action.payload.error,
+      };
+        default:
+          return formData;
+      }
+  }, {
+    name: "",
+    email: "",
+    phoneNo: "",
+    plan: "Arcade",
+    addOns: "",
+    total: "",
+    touched: true,
+    error: null,
+    onlineService: false,
+    extraSpace: false,
+    theme: false,
+    monthly_OR_yearly: false,
+    monthlyRates: {
+      arcade: 9,
+      advanced: 12,
+      pro: 15,
+      onlineService: 1,
+      extraSpace: 2,
+      theme: 2
+    },
+    yearlyRates: {
+      arcade: 90,
+      advanced: 120,
+      pro: 150,
+      onlineService: 10,
+      extraSpace: 20,
+      theme: 20
+    }
+  });
+  console.log(state);
+  
+  const [id, setId] = React.useState(0);
   const [isVisible, setVisibility] = React.useState('Info');
   const [btnBg, setBtnBg] = React.useState(
     {
@@ -36,35 +131,19 @@ function App() {
   console.log(btnBg);
 };
 
-  // State to handle React form data
-  const [formData, setFormData] = React.useState({
-    name: "",
-    email: "",
-    phoneNo: "",
-    plan: "Arcade",
-    addOns: "",
-    total: "",
-    onlineService: false,
-    extraSpace: false,
-    theme: false,
-    monthly_OR_yearly: false,
-    monthlyRates: {
-      arcade: 9,
-      advanced: 12,
-      pro: 15,
-      onlineService: 1,
-      extraSpace: 2,
-      theme: 2
-    },
-    yearlyRates: {
-      arcade: 90,
-      advanced: 120,
-      pro: 150,
-      onlineService: 10,
-      extraSpace: 20,
-      theme: 20
-    }
-  })
+function handleCounterIcrememnt(count) {
+  if (count == 4){
+    setCounter(0);
+  }
+  setCounter(count => count++);
+}
+function handleCounterDecrement(count) {
+  if (count == 0){
+    setCounter(0);
+  }
+  setCounter(count => count--);
+}
+  
 
   function handleChange(event) {
       const {name, type, value, checked} = event.target;
@@ -122,8 +201,9 @@ function App() {
           isVisible = {isVisible} 
           makeVisible = {toggleVisibility} 
           componentNameNext = {'Plans'}
-          formData = {formData}
           handleChange = {handleChange}
+          dispatch = {dispatch}
+          state = {state}
         />}
       {isVisible === 'Plans' && 
         <Plans 

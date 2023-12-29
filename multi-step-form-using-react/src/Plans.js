@@ -12,7 +12,7 @@ function Plans(props) {
                 <h1>Select your plan</h1>
                 <p className="p-color">You have the option of monthly or yearly billing.</p>
                 <form className="gr-plan">
-                <label className="plan" htmlFor="plan1">
+                <label className={`plan p-3 ${props.formData.plan === "Arcade" ? 'selected' : ''}`} htmlFor="plan1">
                     <input type="radio" name="plan" id="plan1" value="Arcade" checked={props.formData.plan === "Arcade"} onChange={props.handleChange}/>
                     <img src={arcade} alt="arcade-icon" />
                     <div className="ml-2">
@@ -23,7 +23,7 @@ function Plans(props) {
                         {mORy === 'yr' && <p className="text-xs">2 months free</p>}
                     </div>
                 </label>
-                <label className="plan" htmlFor="plan2">
+                <label className={`plan p-3 ${props.formData.plan === "Advanced" ? 'selected' : ''}`} htmlFor="plan2">
                     <input type="radio" name="plan" value="Advanced" id="plan2" checked={props.formData.plan === "Advanced"} onChange={props.handleChange}/>
                     <img src={advance} alt="advance-icon"/>
                     <div className="ml-2">
@@ -34,7 +34,7 @@ function Plans(props) {
                     {mORy === 'yr' && <p className="text-xs">2 months free</p>}
                     </div>
                 </label>
-                <label className="plan" htmlFor="plan3">
+                <label className={`plan p-3 ${props.formData.plan === "Pro" ? 'selected' : ''}`} htmlFor="plan3">
                     <input type="radio" name="plan" value="Pro" id="plan3" checked={props.formData.plan === "Pro"} onChange={props.handleChange}/>
                     <img src={pro} alt="pro-icon"/>
                     <div className="ml-2">

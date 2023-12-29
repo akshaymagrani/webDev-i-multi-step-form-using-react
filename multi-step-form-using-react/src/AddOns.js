@@ -8,7 +8,7 @@ function AddOns(props) {
                 <h1>Pick add-ons</h1>
                 <p>Add-ons help enhance your gaming experience.</p>
 
-                <label className="container addOn" htmlFor="onlineService">
+                <label className={`container addOn rounded ${props.formData.onlineService ? 'selected':''}`} htmlFor="onlineService">
                 <div>
                     <input type="checkbox" name="onlineService" id="onlineService" checked={props.formData.onlineService} onChange={props.handleChange}/>
                     <span className="checkmark"></span>
@@ -22,7 +22,7 @@ function AddOns(props) {
                 </p>
                 </label>
 
-                <label className="container addOn" htmlFor="extraSpace">
+                <label className={`container addOn rounded  ${props.formData.extraSpace ? 'selected':''}`} htmlFor="extraSpace">
                     <div>
                     <input type="checkbox" name="extraSpace" id="extraSpace" checked={props.formData.extraSpace} onChange={props.handleChange}/>
                     <span className="checkmark"></span>
@@ -36,7 +36,7 @@ function AddOns(props) {
                     </p>
                 </label>
 
-                <label className="container addOn" htmlFor="theme">
+                <label className={`container addOn rounded  ${props.formData.theme ? 'selected':''}`} htmlFor="theme">
                     <div>
                     <input type="checkbox" name="theme" id="theme" checked={props.formData.theme} onChange={props.handleChange}/>
                     <span className="checkmark"></span>

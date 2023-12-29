@@ -100,7 +100,7 @@ section {
 .card {
   width: clamp(200px, calc(100vw - 6em), 362px);
   position: relative;
-  top: -4em;
+  top: -10em;
   margin: 0 auto;
 }
 
@@ -199,6 +199,7 @@ input[value="Confirm"] {
 .plan {
   border-radius: 5px;
   border: 2px solid transparent;
+  margin: 0.5em 0;
 }
 
 input[type="radio"] {
@@ -206,7 +207,6 @@ input[type="radio"] {
   height: 2px;
 }
 
-.plan,
 .plan img {
   margin: 1.6em 0;
 }
@@ -390,7 +390,7 @@ input[type="checkbox"] {
 
 .btn-position {
   position: absolute;
-  bottom: 1.6em;
+  bottom: 0;
   width: 100%;
 }
 
@@ -481,6 +481,10 @@ input:checked+.slider:before {
     height: calc(100vh - 10px);
   }
 
+    .M-or-Y {
+      margin: 5em 0;
+    }
+
   .gr {
     display: grid;
     grid-template-columns: 0.75fr 2fr;
@@ -565,6 +569,7 @@ input:checked+.slider:before {
     border-radius: 5px;
     border: 2px solid var(--Light-gray);
     padding: 1.6em;
+    margin: 1.5em 0;
   }
 
   .plan div,
@@ -589,4 +594,8 @@ input:checked+.slider:before {
 
 .radio-no-border {
   border: 2px solid var(--Light-gray);
+}
+
+.selected{
+  border: 2px solid blue;
 }
